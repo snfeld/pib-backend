@@ -1,8 +1,6 @@
-version: '3'
-
 services:
   pib-blockly-server:
-    image: pib-blockly-server
+    image: snfeld/pib-blockly-server
     build:
       context: ./pib_blockly/pib_blockly_server
       dockerfile: ./Dockerfile
@@ -14,7 +12,7 @@ services:
     restart: always
 
   flask-app:
-    image: flask_api
+    image: snfeld/flask-api
     build:
       context: .
       dockerfile: ./pib_api/flask/Dockerfile
@@ -33,20 +31,20 @@ services:
     depends_on:
       - pib-blockly-server
 
-  sqlite-viewer:
-    image: coleifer/sqlite-web:latest
-    networks:
-      - pib-network
-    ports:
-      - "8000:8080"
-    environment:
-      - SQLITE_DATABASE=pibdata.db
-    restart: always
-    volumes:
-      - ./pib_api/flask/:/data
+  #sqlite-viewer:
+  #  image: coleifer/sqlite-web:latest
+  #  networks:
+  #    - pib-network
+  #  ports:
+  #    - "8000:8080"
+  #  environment:
+  #    - SQLITE_DATABASE=pibdata.db
+  #  restart: always
+  #  volumes:
+  #    - ./pib_api/flask/:/data
 
   tinkerforge-brickd:
-    image: tinkerforge-brickd
+    image: snfeld/tinkerforge-brickd
     build:
       context: .
       dockerfile: Dockerfile.brickd
@@ -67,6 +65,7 @@ services:
       - flask-app
 
   rosbridge-ws:
+    image: snfeld/rosbridge-ws
     build:
       context: ./ros_packages
       dockerfile: ./rosbridge/Dockerfile
@@ -78,7 +77,7 @@ services:
       - "9090:9090"
 
   ros-camera:
-    image: ros-camera
+    image: snfeld/ros-camera
     privileged: true
     build:
       context: ./ros_packages
@@ -100,7 +99,7 @@ services:
       - rosbridge-ws
 
   ros-motors:
-    image: ros_motors
+    image: snfeld/ros-motors
     build:
       context: .
       dockerfile: ./ros_packages/motors/Dockerfile
@@ -122,7 +121,7 @@ services:
       - flask-app
 
   ros-voice-assistant:
-    image: ros_voice_assistant
+    image: snfeld/ros-voice-assistant
     build:
       context: .
       dockerfile: ./ros_packages/voice_assistant/Dockerfile
@@ -154,7 +153,7 @@ services:
       - pib-blockly-server
 
   ros-programs:
-    image: ros_programs
+    image: snfeld/ros-programs
     build:
       context: .
       dockerfile: ./ros_packages/programs/Dockerfile
@@ -181,7 +180,7 @@ services:
       - flask-app
 
   ros-display:
-    image: ros-display
+    image: snfeld/ros-display
     privileged: true
     build:
       context: .
