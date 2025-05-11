@@ -21,4 +21,4 @@ jobs:
     - name: Build Docker images for AMD64 and ARM64 and push
       run: |
         docker buildx create --use
-        docker buildx bake --platform linux/amd64,linux/arm64 .         
+        docker buildx bake --print        
