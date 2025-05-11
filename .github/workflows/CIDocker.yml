@@ -20,5 +20,6 @@ jobs:
 
     - name: Build Docker images for AMD64 and ARM64 and push
       run: |
+        touch password.env
         docker buildx create --use
         docker buildx bake --print        
