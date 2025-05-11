@@ -5,6 +5,12 @@ This script assumes:
 - that the newest Raspberry Pi OS is installed
 - the user running it is **pib**
 
+## Docker build
+
+[![CIDocker](https://github.com/snfeld/pib-backend/actions/workflows/CIDocker.yml/badge.svg)](https://github.com/snfeld/pib-backend/actions/workflows/CIDocker.yml)
+[![Lint](https://github.com/snfeld/pib-backend/actions/workflows/black.yml/badge.svg)](https://github.com/snfeld/pib-backend/actions/workflows/black.yml)
+
+
 ## Installing pibs software
 
 All the software pib requires can be installed by running our setup script.
