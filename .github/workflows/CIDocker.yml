@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-  
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+      
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
@@ -26,4 +28,4 @@ jobs:
         push: false
         set: |
           *.platform=linux/amd64
-        
+          *.platform+=linux/arm64       
