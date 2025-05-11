@@ -8,6 +8,7 @@ This script assumes:
 ## Docker build
 
 [![CIDocker](https://github.com/snfeld/pib-backend/actions/workflows/CIDocker.yml/badge.svg)](https://github.com/snfeld/pib-backend/actions/workflows/CIDocker.yml)
+[![Lint](https://github.com/snfeld/pib-backend/actions/workflows/black.yml/badge.svg)](https://github.com/snfeld/pib-backend/actions/workflows/black.yml)
 
 
 ## Installing pibs software
